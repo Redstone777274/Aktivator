@@ -1,0 +1,22 @@
+echo Tento nástroj je vytvořen pomocí stránky msguides.com
+echo Pokud se zobrazí na konci se zobrazí zda aktivace proběhla úspěšně
+:: Kontrola oprávnění správce
+net session >nul 2>&1
+if %errorLevel% neq 0 (
+    echo Tento skript musi byt spusten jako spravce!
+    pause
+    exit /b
+)
+
+
+pause
+slgmr -ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
+pause
+slmgr -skms kms8.msguides.com
+pause
+slgmr -ato
+pause
+echo Pokud nebylo zobrazeno "Product activated successfully" tak zde máte Prikazový radek a napiste slgmr -ato
+start cmd.exe
+exit /b
+
